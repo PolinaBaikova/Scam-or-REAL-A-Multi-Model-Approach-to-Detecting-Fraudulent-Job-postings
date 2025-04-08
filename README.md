@@ -15,7 +15,7 @@ Built-in sqlite3 package in Python is used to connect to the database, create SQ
 
 Several columns such as Title, Department, Description, Company_profile, Benefits and Requirements are highly unique and descriptive. Columns such as Employment_type, Required_experience, Required_education, Industry and Job_function have a smaller number of categories, while others like Telecommuting, Logo, Has_questions and Fraudulent are binary features.
 
-<img src="images/unique_values.png" alt="Unique Values" width="300" height="350">
+<img src="images/unique_values.png" alt="Unique Values" width="300" height="300">
 
 # Data Cleaning and Processing
 
@@ -23,13 +23,13 @@ Several columns such as Title, Department, Description, Company_profile, Benefit
 
 Many features had significant missing data. For the purposes of this project, missing values were retained and marked as 'unspecified', treating the absence of information as a potential signal of fraud.
 
-<img src="images/missing_values.png" alt="Missing values" width="300" height="350">
+<img src="images/missing_values.png" alt="Missing values" width="300" height="300">
 
 ### Location field transformation
 
 The original Location field was split into Country, State, and City for more granular analysis. This allowed us to focus on regional patterns and reduce complexity during modeling.
 
-<img src="images/jobs_by_city.png" alt="Jobs by city" width="450" height="250">
+<img src="images/jobs_by_cities.png" alt="Jobs by city" width="500" height="400">
 
 ### Filtering for U.S. Job Postings
 
