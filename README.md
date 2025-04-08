@@ -15,7 +15,7 @@ Built-in sqlite3 package in Python is used to connect to the database, create SQ
 
 Several columns such as Title, Department, Description, Company_profile, Benefits and Requirements are highly unique and descriptive. Columns such as Employment_type, Required_experience, Required_education, Industry and Job_function have a smaller number of categories, while others like Telecommuting, Logo, Has_questions and Fraudulent are binary features.
 
-<img src="images/unique_values.png" alt="Unique Values" width="300" height="400">
+<img src="images/unique_values.png" alt="Unique Values" width="300" height="350">
 
 # Data Cleaning and Processing
 
@@ -23,13 +23,13 @@ Several columns such as Title, Department, Description, Company_profile, Benefit
 
 Many features had significant missing data. For the purposes of this project, missing values were retained and marked as 'unspecified', treating the absence of information as a potential signal of fraud.
 
-<img src="images/missing_values.png" alt="Missing values" width="300" height="400">
+<img src="images/missing_values.png" alt="Missing values" width="300" height="350">
 
 ### Location field transformation
 
 The original Location field was split into Country, State, and City for more granular analysis. This allowed us to focus on regional patterns and reduce complexity during modeling.
 
-<img src="images/jobs_by_city.png" alt="Jobs by city" width="600" height="450">
+<img src="images/jobs_by_city.png" alt="Jobs by city" width="450" height="250">
 
 ### Filtering for U.S. Job Postings
 
@@ -84,3 +84,27 @@ The analysis of regression coefficients suggests that ‘City’ is most strongl
 
 <img src="images/roc_logit.png" alt="ROC logit" width="500" height="500">
 
+### Random Forest 
+
+Test accuracy: 95.63%
+
+AUC (Area Under the ROC Curve): 0.98
+
+The Random Forest model demonstrated strong performance in predicting fraudulent job postings. 
+A maximum tree depth of 68 was selected to optimize model accuracy, and the classification threshold was lowered to 0.2 to increase sensitivity, making the model more useful in real-world applications where the goal is to correctly identify fraudulent cases.
+Analysis of feature importances showed that Company_profile and Logo were the most influential features, highlighting the importance of basic company information in distinguishing between real and fake jobs.
+Other key features included specific job titles, industries, education levels, and locations, suggesting that the model achieved high accuracy through effective use of diverse variables.
+
+<img src="images/roc_rf.png" alt="ROC rf" width="500" height="500">
+
+### XGBoost
+
+Test accuracy: 95.22%
+
+AUC (Area Under the ROC Curve): 0.97
+
+The XGBoost model demonstrated great performance in predicting fraudulent job postings. 
+XGBoost delivered balanced precision and recall using the default classification threshold of 0.5. 
+In terms of feature importance, Company_profile remained the most influential variable, emphasizing that the inclusion of basic company details is a key signal of job authenticity. Important features included industries, cities and job functions, suggesting that certain roles are more likely to be targeted by fraudulent listings and the number of fake job postigs varies by location.
+
+<img src="images/roc_xgb.png" alt="ROC xgb" width="500" height="500">
